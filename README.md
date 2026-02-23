@@ -5,6 +5,27 @@ A full-stack role-based Project Management System built using the MERN stack.
 This application allows Admins, Employees, and Clients to manage projects, service requests, and notifications in a structured workflow.
 
 ---
+## Live Demo
+
+**Frontend (Vercel):**  
+👉 https://pss-project-management-system.vercel.app/  
+
+**Backend API (Render):**  
+👉 https://pss-project-management-system.onrender.com  
+
+**Database:** MongoDB Atlas (Cloud Hosted)
+
+## Demo Access
+
+For testing the live deployed application, use:
+
+| Role     | Email              | Password   |
+|----------|--------------------|------------|
+| Admin    | admin@pss.com      | admin123   |
+| Employee | purva@.com         | purva123   |
+| Client   | rupa@.com          | rupa123    |
+
+> These accounts are pre-seeded for demonstration purposes.
 
 ## Tech Stack
 

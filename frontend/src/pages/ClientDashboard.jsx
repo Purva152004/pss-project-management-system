@@ -37,6 +37,7 @@ const ClientDashboard = () => {
       </h2>
 
       <div className="bg-white shadow rounded-lg p-6">
+        <div className="overflow-x-auto">
         {loading ? (
           <p>Loading...</p>
         ) : projects.length === 0 ? (
@@ -76,6 +77,7 @@ const ClientDashboard = () => {
             </tbody>
           </table>
         )}
+        </div>
       </div>
     </ClientLayout>
   );

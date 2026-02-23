@@ -21,8 +21,8 @@ import ClientNotifications from "./pages/ClientNotifications";
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Routes>
 
           {/* PUBLIC ROUTE */}
@@ -104,8 +104,8 @@ function App() {
           />
 
         </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

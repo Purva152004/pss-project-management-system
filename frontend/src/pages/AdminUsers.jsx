@@ -108,7 +108,7 @@ const AdminUsers = () => {
           <input
             type="text"
             placeholder="Full Name"
-            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
             value={form.name}
             onChange={(e) =>
               setForm({ ...form, name: e.target.value })
@@ -118,7 +118,7 @@ const AdminUsers = () => {
           <input
             type="email"
             placeholder="Email"
-            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
             value={form.email}
             onChange={(e) =>
               setForm({ ...form, email: e.target.value })
@@ -128,7 +128,7 @@ const AdminUsers = () => {
           <input
             type="password"
             placeholder="Password"
-            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
             value={form.password}
             onChange={(e) =>
               setForm({ ...form, password: e.target.value })
@@ -136,7 +136,7 @@ const AdminUsers = () => {
           />
 
           <select
-            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
             value={form.role}
             onChange={(e) =>
               setForm({ ...form, role: e.target.value })
@@ -160,52 +160,86 @@ const AdminUsers = () => {
         </button>
       </div>
 
-      {/* ================= USERS TABLE ================= */}
+      {/* ================= USERS LIST ================= */}
 
-      <div className="bg-white shadow rounded-lg p-6">
-        {loading ? (
-          <p>Loading users...</p>
-        ) : (
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-b">
-                <th className="py-3">Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th className="text-right">Action</th>
+<div className="bg-white shadow rounded-lg p-6">
+
+  {loading ? (
+    <p>Loading users...</p>
+  ) : (
+    <>
+      {/* ===== Desktop Table ===== */}
+      <div className="hidden md:block">
+        <table className="w-full text-left">
+          <thead>
+            <tr className="border-b">
+              <th className="py-3">Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th className="text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr
+                key={user._id}
+                className="border-b hover:bg-gray-50"
+              >
+                <td className="py-3">{user.name}</td>
+                <td>{user.email}</td>
+                <td>
+                  <span className="capitalize bg-gray-100 px-3 py-1 rounded-full text-sm">
+                    {user.role}
+                  </span>
+                </td>
+                <td className="text-right">
+                  {user.role !== "admin" && (
+                    <button
+                      onClick={() => handleDelete(user._id)}
+                      className="text-red-500 hover:underline"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr
-                  key={user._id}
-                  className="border-b hover:bg-gray-50"
-                >
-                  <td className="py-3">{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>
-                    <span className="capitalize bg-gray-100 px-3 py-1 rounded-full text-sm">
-                      {user.role}
-                    </span>
-                  </td>
-                  <td className="text-right">
-                    {user.role !== "admin" && (
-                      <button
-                        onClick={() =>
-                          handleDelete(user._id)
-                        }
-                        className="text-red-500 hover:underline"
-                      >
-                        Delete
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+            ))}
+          </tbody>
+        </table>
       </div>
+
+      {/* ===== Mobile Card Layout ===== */}
+      <div className="md:hidden space-y-4">
+        {users.map((user) => (
+          <div
+            key={user._id}
+            className="border rounded-lg p-4 shadow-sm"
+          >
+            <p className="font-semibold">{user.name}</p>
+            <p className="text-sm text-gray-600 break-all">
+              {user.email}
+            </p>
+
+            <div className="mt-2 flex justify-between items-center">
+              <span className="capitalize bg-gray-100 px-3 py-1 rounded-full text-sm">
+                {user.role}
+              </span>
+
+              {user.role !== "admin" && (
+                <button
+                  onClick={() => handleDelete(user._id)}
+                  className="text-red-500 text-sm"
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )}
+</div>
     </AdminLayout>
   );
 };

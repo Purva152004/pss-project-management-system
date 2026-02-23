@@ -40,6 +40,7 @@ const AdminServices = () => {
       </h2>
 
       <div className="bg-white p-6 shadow rounded-lg">
+        <div className="overflow-x-auto">
         {requests.map((req) => (
           <div
             key={req._id}
@@ -63,6 +64,7 @@ const AdminServices = () => {
             )}
           </div>
         ))}
+        </div>
       </div>
     </AdminLayout>
   );

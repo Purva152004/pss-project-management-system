@@ -180,11 +180,13 @@ const AdminProjects = () => {
       {/* ================= PROJECT TABLE ================= */}
 
       <div className="bg-white shadow rounded-lg p-6">
+        <div className="overflow-x-auto">
         {loading ? (
           <p>Loading projects...</p>
         ) : projects.length === 0 ? (
           <p className="text-gray-500">No projects found.</p>
         ) : (
+          
           <table className="w-full text-left">
             <thead>
               <tr className="border-b">
@@ -216,6 +218,7 @@ const AdminProjects = () => {
             </tbody>
           </table>
         )}
+        </div>
       </div>
     </AdminLayout>
   );

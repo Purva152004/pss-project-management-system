@@ -76,6 +76,7 @@ const ClientServices = () => {
 
       {/* My Requests Status */}
       <div className="bg-white p-6 shadow rounded-lg">
+        <div className="overflow-x-auto">
         <h3 className="text-lg font-semibold mb-4">
           My Requests
         </h3>
@@ -114,6 +115,7 @@ const ClientServices = () => {
             </tbody>
           </table>
         )}
+        </div>
       </div>
     </ClientLayout>
   );
