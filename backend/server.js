@@ -9,7 +9,15 @@ const User = require("./models/User");
 const app = express();
 
 /* MIDDLEWARE */
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://pss-project-management-system.vercel.app"
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 /* ROUTES */
